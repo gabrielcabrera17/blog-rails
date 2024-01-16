@@ -1,0 +1,65 @@
+<!-- Movamos también esta nueva sección de comentarios a su propio parcial. Nuevamente, cree un archivo app/views/comments/_form.html.erb
+ que contenga:-->
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.label :status %><br>
+    <%= form.select :status, Visible::VALID_STATUSES, selected: 'public' %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+     <!-- El código que proporcionaste es un fragmento de código Ruby on Rails que se utiliza para generar un formulario HTML en una vista de una aplicación web. El formulario parece estar relacionado con un modelo llamado "Article" y sus comentarios. Vamos a desglosar el código línea por línea:
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+
+form_with es un método proporcionado por Ruby on Rails que se utiliza para generar un formulario HTML. En este caso, el formulario se creará para el modelo Article y un comentario asociado a ese artículo. El model se establece en un arreglo que contiene dos elementos: @article (un objeto de artículo existente) y @article.comments.build (un nuevo comentario asociado al artículo).
+do |form| abre un bloque que permite operar en el objeto form que se crea a partir de este formulario.
+<p>
+
+Este es un elemento HTML <p> que se utiliza para agrupar las etiquetas y campos del formulario.
+<%= form.label :commenter %><br>
+
+form.label :commenter genera una etiqueta HTML para un campo del formulario. En este caso, se genera una etiqueta para el atributo :commenter del modelo (por lo general, el nombre del autor del comentario).
+<br> es un salto de línea en HTML que se coloca después de la etiqueta.
+<%= form.text_field :commenter %>
+
+form.text_field :commenter genera un campo de entrada de texto en el formulario para el atributo :commenter. Los usuarios podrán ingresar el nombre del autor del comentario en este campo.
+</p>
+
+Cierra el elemento <p> que agrupa el campo de autor.
+<p>
+
+Abre otro elemento <p> para agrupar las siguientes etiquetas y campos.
+<%= form.label :body %><br>
+
+form.label :body genera una etiqueta para otro campo del formulario, en este caso, para el atributo :body (generalmente, el contenido del comentario).
+<br> es un salto de línea en HTML que se coloca después de la etiqueta.
+<%= form.text_area :body %>
+
+form.text_area :body genera un área de texto en el formulario para el atributo :body. Los usuarios podrán escribir el contenido del comentario en esta área de texto.
+</p>
+
+Cierra el elemento <p> que agrupa el campo de contenido del comentario.
+<p>
+
+Abre otro elemento <p> para agrupar el botón de envío del formulario.
+<%= form.submit %>
+
+form.submit genera un botón de envío en el formulario. Al hacer clic en este botón, los datos ingresados en el formulario se enviarán al servidor para su procesamiento.
+</p>
+
+Cierra el elemento <p> que agrupa el botón de envío.
+<% end %>
+
+Cierra el bloque de código del formulario que se abrió con do |form|.
+En resumen, este código genera un formulario en una vista de Ruby on Rails que permite a los usuarios agregar comentarios a un artículo. El formulario recopila el nombre del autor del comentario y el contenido del comentario. Cuando se envía el formulario, los datos se procesan en el servidor.
+-->

@@ -1,0 +1,31 @@
+<h1> <%= @article.title %></h1>
+<p><%= @article.body %></p>
+<ul>
+  <li><%= link_to "Editar", edit_article_path(@article) %></li>
+  <!--La acción de destrucción recupera el artículo de la base de datos y llama a destruirlo. Luego, redirige el navegador a la ruta
+   raíz con el código de estado 303 Ver otro. Hemos elegido redirigir a la ruta raíz porque ese es nuestro principal punto de acceso
+    a los artículos. Pero, en otras circunstancias, puede optar por redirigir, por ejemplo. ruta_artículos.Ahora agreguemos un enlace
+     en la parte inferior de app/views/articles/show.html.erb para que podamos eliminar un artículo de su propia página:-->
+  <li><%= link_to "Eliminar", article_path(@article), data: {
+    turbo_method: :delete,
+    turbo_confirm: "Estar Seguro que lo quiere eliminar?"
+  } %></li>
+</ul>
+<!-- Aquí es donde queremos que se muestre el comentario, así que agreguémoslo a app/views/articles/show.html.erb.-->
+
+<!-- Esto ahora mostrará el parcial en app/views/comments/_comment.html.erb una vez por cada comentario que esté en la colección
+@article.comments. A medida que el método de representación itera sobre la colección @article.comments, asigna cada comentario a una
+variable local con el mismo nombre que el parcial, en este caso comentario, que luego está disponible en el parcial para que lo mostremos. -->
+<h2>Comentarios</h2>
+<%= render @article.comments%>
+
+
+
+<!-- debido a esto, nuestro CommentsController está ahí para proporcionar un método para crear comentarios y eliminar
+comentarios spam cuando llegan.Primero, conectaremos la plantilla de presentación de artículos
+(app/views/articles/show.html.erb) para permitirnos hacer un nuevo comentario:-->
+<h2> Agregar un Comentario </h2>
+<%= render 'comments/form' %>
+<!-- El segundo renderizado simplemente define la plantilla parcial que queremos renderizar, comentarios/formulario. Rails es lo suficientemente inteligente como para detectar la barra diagonal en esa cadena y darse cuenta de que desea representar el archivo _form.html.erb en el directorio app/views/comments.-->
+
+<!--El objeto @article está disponible para cualquier parcial representado en la vista porque lo definimos como una variable de instancia.-->

@@ -1,0 +1,16 @@
+<h1 align="center"> Articulos</h1>
+<!--#El asistente link_to representa un enlace con su primer argumento como el texto del enlace y su segundo argumento como el destino del enlace. Si pasamos un objeto modelo como segundo argumento, link_to llamará al asistente de ruta apropiado para convertir el objeto en una ruta.-->
+Nuestro blog tiene <%= Article.public_count %> articulos y contando!
+<ul>
+  <% @article.each do |article| %>
+    <% unless article.archived? %>
+  <li>
+    <%= link_to article.title, article %>
+  </li>
+    <% end %>
+  <% end %>
+
+</ul>
+
+<!--#vinculemos esa página desde la parte inferior de app/views/articles/index.html.erb:-->
+<%= link_to "Nuevo Articulo ", new_article_path %>

@@ -1,0 +1,24 @@
+@import "bootstrap";
+
+.content-wrapper {
+  text-align: left;
+  display: flex;
+
+}
+
+.image-container{
+  margin-left: 200px;
+  display: inline-block;
+}
+
+.image-container img {
+  max-width: 400%; /* Asegura que la imagen no exceda el ancho del contenedor */
+  height: auto; /* Permite que la altura se ajuste proporcionalmente al ancho */
+  display: block; /* Hace que la imagen se comporte como un bloque en línea */
+}
+.custom-image-style {
+  border: 4px solid #0b82d0; /* Cambia el grosor y el color del borde según tus preferencias */
+  padding: 7px; /* Opcional: Añade relleno alrededor de la imagen para separar el borde del contenido */
+}
+
+

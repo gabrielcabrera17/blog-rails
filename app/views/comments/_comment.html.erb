@@ -1,0 +1,23 @@
+<% unless comment.archived? %>
+<p>
+  <strong>Titulo_de_comentario: </strong>
+  <%= comment.commenter %>
+</p>
+<p>
+  <strong>Comentario: </strong>
+  <%= comment.commenter %>
+</p>
+  <!-- Otra característica importante de un blog es poder eliminar comentarios spam. Para hacer esto, necesitamos implementar
+  un enlace de algún tipo en la vista y una acción de destrucción en CommentsController.-->
+
+  <!-- Entonces, primero, agreguemos el enlace de eliminación en el parcial app/views/comments/_comment.html.erb: -->
+  <p>
+    <%= link_to "Borrar Comentario", [comment.article, comment], data:{
+      turbo_method: :delete,
+      turbo_confirm: "¿Estas seguro de Borrarlo?"
+    }
+
+    %>
+    <!-- turbo_method: delete: Aquí, estás configurando el atributo turbo_method con el valor "delete". Esto se usa en conjunto con Turbo Frames o Turbo Streams en Ruby on Rails para indicar que este enlace debe realizar una solicitud HTTP DELETE cuando se hace clic en él. En otras palabras, este enlace se utiliza para eliminar un comentario.-->
+  </p>
+<%end %>
